@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ArrayEmployees.h"
 #include "funcionesAdicionales.h"
+#include "utn.h"
 
 int initEmployees(Employee employeesList[], int len){
 
@@ -27,7 +29,14 @@ int addEmployee(Employee employeesList[], int len, int id){
 
     int error = 1;
     int index;
-    Employee auxEmployee;
+    int validName;
+    int validLastName;
+    int validSalary;
+    int validSector;
+    char auxName[51];
+    char auxLastName[51];
+    float auxSalary;
+    int auxSector;
 
     if((employeesList != NULL) && (len > 0) && (id > 0)){
 
@@ -43,25 +52,36 @@ int addEmployee(Employee employeesList[], int len, int id){
             printf("*** ALTA DE EMPLEADO ***\n\n");
 
             // INGRESO DE DATOS DEL EMPLEADO
-            auxEmployee.id = id;
+            employeesList[index].id = id;
+            employeesList[index].isEmpty = 0;
 
-            auxEmployee.isEmpty = 0;
+            do{
 
-            printf("Ingrese nombre: ");
-            fflush(stdin);
-            gets(auxEmployee.name);
+                validName = getValidString("Ingrese nombre: \n", "Solo puede ingresar letras. Vuelva a intentar: \n", "No puede tener mas de 50 caracteres. Vuelva a intentar: \n", auxName, 50, 1);
 
-            printf("Ingrese apellido: ");
-            fflush(stdin);
-            gets(auxEmployee.lastName);
+            }while(validName == -1);
+            strcpy(employeesList[index].name, auxName);
 
-            printf("Ingrese salario: ");
-            scanf("%f", &auxEmployee.salary);
+            do{
 
-            printf("Ingrese sector: ");
-            scanf("%d", &auxEmployee.sector);
+                validLastName = getValidString("Ingrese apellido: \n", "Solo puede ingresar letras. Vuelva a intentar: \n", "No puede tener mas de 50 caracteres. Vuelva a intentar: \n", auxLastName, 50, 1);
 
-            employeesList[index] = auxEmployee;
+            }while(validLastName == -1);
+            strcpy(employeesList[index].lastName, auxLastName);
+
+            do{
+
+                validSalary = getValidFloat("Ingrese salario: \n", "Solo puede ingresar numeros enteros o decimales. Vuelva a intentar: \n", &auxSalary, 0, 1000000, 1);
+
+            }while(validSalary == -1);
+            employeesList[index].salary = auxSalary;
+
+            do{
+
+                validSector = getValidInt("Ingrese sector: \n", "Solo puede ingresar numeros enteros. Vuelva a intentar: \n", &auxSector, 0, 1000000, 1);
+
+            }while(validSector == -1);
+            employeesList[index].sector = auxSector;
 
             error = 0;
 
@@ -119,11 +139,11 @@ int removeEmployee(Employee employeesList[], int len){
         else{
 
             printOneEmployee(employeesList[index]);
-            printf("Confirma la baja?\n");
+            printf("\nConfirma la baja? 'y' para confirmar, otro caracter para rechazar\n");
             fflush(stdin);
             scanf("%c", &confirm);
             printf("\n");
-            if(confirm == 's'){
+            if(confirm == 'y'){
 
                 employeesList[index].isEmpty = 1;
                 error = 0;

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "ArrayEmployees.h"
 #include "funcionesAdicionales.h"
+#include "utn.h"
 
 #define LEN 1000
 #define ASC 1
@@ -38,7 +39,7 @@ int main()
         system("cls");
         printf("***NOMINA DE EMPLEADOS***\n\n\n");
 
-        // MENU
+        // MENU PRINCIPAL
         menuChoice = showMenu(1);
 
         // OPCION A REALIZAR EN BASE A LO QUE ELIJA EL USUARIO
@@ -48,6 +49,7 @@ int main()
             case 1:
 
                 addEmployeeResult = addEmployee(list, LEN, idNumber);
+                // ALTA EXITOSA
                 if(!addEmployeeResult){
 
                     idNumber++;
@@ -55,6 +57,7 @@ int main()
                     flagAddEmployee = 1;
 
                 }
+                // ERROR AL DAR DE ALTA
                 else{
 
                     printf("Error al intentar agregar empleado.\n");
@@ -66,27 +69,32 @@ int main()
             // MODIFICAR
             case 2:
 
+                // PIDO QUE PRIMERO SE HAYA DADO DE ALTA AL MENOS A UN EMPLEADO
                 if(flagAddEmployee){
 
                     modifyEmployeeResult = modifyEmployee(list, LEN);
+                    // MODIFICACION EXITOSA
                     if(modifyEmployeeResult == 0){
 
                         printf("Modifiacion exitosa.\n\n");
 
                     }
+                    // ERROR AL MODIFICAR
                     else if(modifyEmployeeResult == 1){
 
                         printf("Error al intentar modificar.\n\n");
 
                     }
+                    // MODIFICACION CANCELADA
                     else{
 
-                        printf("Modificacion cancelada por el usuario.");
+                        printf("Modificacion cancelada por el usuario.\n\n");
 
                     }
 
 
                 }
+                // NO HAY NINGUN EMPLEADO DADO DE ALTA
                 else{
 
                     printf("Primero debe dar de alta al menos a un empleado.\n\n");
@@ -98,19 +106,23 @@ int main()
             // BAJA
             case 3:
 
+                // PIDO QUE PRIMERO SE HAYA DADO DE ALTA AL MENOS A UN EMPLEADO
                 if(flagAddEmployee){
 
                     removeEmployeeResult = removeEmployee(list, LEN);
+                    // BAJA EXITOSA
                     if(removeEmployeeResult == 0){
 
                         printf("Baja exitosa.\n\n");
 
                     }
+                    // ERROR AL DAR DE BAJA
                     else if(removeEmployeeResult == 1){
 
                         printf("Error al intentar dar la baja.\n\n");
 
                     }
+                    // BAJA CANCELADA
                     else{
 
                         printf("Baja cancelada por el usuario.\n\n");
@@ -118,6 +130,7 @@ int main()
                     }
 
                 }
+                // NO HAY NINGUN EMPLEADO DADO DE ALTA
                 else{
 
                     printf("Primero debe dar de alta al menos a un empleado.\n\n");
@@ -126,20 +139,25 @@ int main()
                 system("pause");
                 break;
 
-            // INFORMAR
+            // INFORMES
             default:
 
+                // PIDO QUE PRIMERO SE HAYA DADO DE ALTA AL MENOS A UN EMPLEADO
                 if(flagAddEmployee){
 
+                    // SUBMENU DE INFORMES
                     informChoice1 = showMenu(3);
+                    // EL USUARIO ELIGE INFORMAR LA LISTA DE EMPLEADOS ORDENADA POR SECTOR Y APELLIDO
                     if(informChoice1 == 1){
 
                         printf("Como quiere ordenar?\n\n");
+                        // SUBMENU DE ORDENAMIENTO
                         informChoice2 = showMenu(4);
                         howToSort(list, LEN, informChoice2);
                         printEmployees(list, LEN);
 
                     }
+                    // EL USUARIO SOLICITA INFORMACION ACERCA DE LOS SALARIOS
                     else{
 
                         salariesSumResult = salariesSum(list, LEN);
@@ -156,6 +174,7 @@ int main()
                     }
 
                 }
+                // NO HAY NINGUN EMPLEADO DADO DE ALTA
                 else{
 
                     printf("Primero debe dar de alta al menos a un empleado.\n\n");
@@ -164,13 +183,15 @@ int main()
                 system("pause");
 
         }
-
-        printf("Pulse 'x' si desea salir, u otra letra para seguir operando.");
+        // PREGUNTA AL USUARIO SI ABANDONAR EL PROGRAMA
+        printf("\nPulse 'x' si desea salir, u otra letra para seguir operando:\n");
+        fflush(stdin);
         scanf("%c", &exit);
 
     }while(exit != 'x');
 
     system("cls");
+    // DESPEDIDA
     printf("Gracias por usar el programa!!\n\n");
 
     return 0;

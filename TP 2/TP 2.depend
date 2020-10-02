@@ -34,3 +34,40 @@
 	"ArrayEmployees.h"
 	"funcionesAdicionales.h"
 
+1601664035 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"funcionesAdicionales.h"
+	"utn.h"
+
+1601602006 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.h
+
+1601596417 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.h
+	"ArrayEmployees.h"
+
+1601661888 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"funcionesAdicionales.h"
+	"utn.h"
+
+1601664286 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesAdicionales.h"
+	"ArrayEmployees.h"
+	"utn.h"
+
+1601661108 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\utn.h
+
+1601661110 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
