@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1601323555 source:c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 2\tp 2\funcionesadicionales.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesAdicionales.h"
+	"ArrayEmployees.h"
+
+1601323771 c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 2\tp 2\funcionesadicionales.h
+	"ArrayEmployees.h"
+
+1601324067 c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 2\tp 2\arrayemployees.h
+
+1601596732 source:c:\users\intel\documents\github\tp_laboratorio_2\funcionesadicionales.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesAdicionales.h"
+	"ArrayEmployees.h"
+
+1601596417 c:\users\intel\documents\github\tp_laboratorio_2\funcionesadicionales.h
+	"ArrayEmployees.h"
+
+1601409264 c:\users\intel\documents\github\tp_laboratorio_2\arrayemployees.h
+
+1601596417 source:c:\users\intel\documents\github\tp_laboratorio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"funcionesAdicionales.h"
+
+1601586817 source:c:\users\intel\documents\github\tp_laboratorio_2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"funcionesAdicionales.h"
+

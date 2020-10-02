@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1599605900 source:c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"funciones.h"
+
+1599578028 c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\funciones.h
+
+1599604447 source:c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\funciones.c
+	"funciones.h"
+
+1599850022 source:c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\tp_laboratorio_1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1599848699 c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\tp_laboratorio_1\funciones.h
+
+1599849987 source:c:\users\intel\documents\juani\utn\1° cuatrimestre\programación i - lab i\tp 1\tp_laboratorio_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
