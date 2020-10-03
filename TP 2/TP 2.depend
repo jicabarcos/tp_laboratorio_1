@@ -34,7 +34,7 @@
 	"ArrayEmployees.h"
 	"funcionesAdicionales.h"
 
-1601664035 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.c
+1601693025 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -42,19 +42,19 @@
 	"funcionesAdicionales.h"
 	"utn.h"
 
-1601602006 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.h
+1601693912 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\arrayemployees.h
 
-1601596417 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.h
+1601693912 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.h
 	"ArrayEmployees.h"
 
-1601661888 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\main.c
+1601665376 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayEmployees.h"
 	"funcionesAdicionales.h"
 	"utn.h"
 
-1601664286 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.c
+1601692770 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 2\funcionesadicionales.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

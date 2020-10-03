@@ -97,11 +97,11 @@ int findEmpty(Employee employeesList[], int len){
 
 void printOneEmployee(Employee employeesList){
 
-    printf(" %d  %10s  %10s  %.2f  %d\n", employeesList.id, employeesList.name, employeesList.lastName, employeesList.salary, employeesList.sector);
+    printf(" %d  %10s  %10s    %2.2f    %3d\n", employeesList.id, employeesList.name, employeesList.lastName, employeesList.salary, employeesList.sector);
 
 }
 
-int modifyEmployee(Employee employeesList[], int len){  // 0 baja exitosa; 1 hubo problema; 2 cancelado
+int modifyEmployee(Employee employeesList[], int len){
 
     int error = 1;
     int index;

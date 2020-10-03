@@ -171,8 +171,8 @@ int printEmployees(Employee employeesList[], int len){
     if((employeesList != NULL) && (len > 0)){
 
         printf("***        LISTADO DE EMPLEADOS        ***\n\n");
-        printf("  ID  NOMBRE  APELLIDO   SALARIO   SECTOR\n");
-        printf("-----------------------------------------\n");
+        printf("   ID     NOMBRE    APELLIDO    SALARIO   SECTOR\n");
+        printf("-----------------------------------------------\n");
         for(int i = 0; i < len; i++){
 
             if(employeesList[i].isEmpty == 0){
