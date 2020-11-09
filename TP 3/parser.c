@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "parser.h"
 #include "LinkedList.h"
 #include "Employee.h"
 
@@ -20,18 +22,16 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     char nombreStr[20];
     char horasTrabajadasStr[20];
     char sueldoStr[20];
-    int horasInt;
 
-    if(idStr != NULL && nombreStr != NULL, horasTrabajadasStr != NULL &&
-       sueldoStr != NULL && pFile != NULL){
+    if(pFile != NULL && pArrayListEmployee != NULL){
 
-        while(!feof(pFile)){
+        fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", idStr, nombreStr, horasTrabajadasStr, sueldoStr);
+        do{
 
-            r = fscanf(pFile, "%[^,], %[^,], %[^,], %[^\n]\n", idStr, nombreStr, horasTrabajadasStr, sueldoStr);
+            r = fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", idStr, nombreStr, horasTrabajadasStr, sueldoStr);
             if(r == 4){
 
                 auxEmployee = employee_newParametros(idStr, nombreStr, horasTrabajadasStr, sueldoStr);
-
                 if(auxEmployee != NULL){
 
                     ll_add(pArrayListEmployee, auxEmployee);
@@ -40,20 +40,10 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
             }
 
-        }
+        }while(!feof(pFile));
+        error = 0;
 
     }
-
-    horasInt = atoi(horasTrabajadasStr);
-
-    employee_getHorasTrabajadas(auxEmployee, horasInt);
-    printf("%d\n", horasInt);
-
-
-    //printf("%d, %s, %d, %.2f", auxEmployee->id, auxEmployee->nombre, auxEmployee->horasTrabajadas, auxEmployee->sueldo);
-
-
-    fclose(pFile);
 
 
     return error;
@@ -70,5 +60,97 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
 
-    return 1;
+    int error = 1;
+    int r;
+    Employee* auxEmployee;
+
+
+    if(pFile != NULL && pArrayListEmployee != NULL){
+
+            do{
+
+                auxEmployee = employee_new();
+                if(auxEmployee != NULL){
+
+                    r = fread(auxEmployee, sizeof(Employee), 1, pFile);
+                    if(r){
+
+                        if(auxEmployee != NULL){
+
+                            ll_add(pArrayListEmployee, auxEmployee);
+
+                        }
+
+                    }
+
+                }
+
+            }while(!feof(pFile));
+            error = 0;
+
+    }
+
+    return error;
+
+}
+
+int parser_textFromEmployee(FILE* pFile, LinkedList* pArrayListEmployee){
+
+    int error = 1;
+    Employee* auxEmployee;
+    int cantidadDeEmpleados;
+    int auxId;
+    char auxNombre[50];
+    int auxHorasTrabajadas;
+    int auxSueldo;
+
+    if(pFile != NULL && pArrayListEmployee != NULL){
+
+        cantidadDeEmpleados = ll_len(pArrayListEmployee);
+        fprintf(pFile, "id,nombre,horasTrabajadas,sueldo\n");
+        for(int i = 0; i < cantidadDeEmpleados; i++){
+
+            auxEmployee = (Employee*) ll_get(pArrayListEmployee, i);
+            if(auxEmployee != NULL){
+
+                employee_getId(auxEmployee, &auxId);
+                employee_getNombre(auxEmployee, auxNombre);
+                employee_getHorasTrabajadas(auxEmployee, &auxHorasTrabajadas);
+                employee_getSueldo(auxEmployee, &auxSueldo);
+                fprintf(pFile, "%d,%s,%d,%d\n", auxId, auxNombre, auxHorasTrabajadas, auxSueldo);
+
+            }
+
+        }
+        error = 0;
+
+    }
+    return error;
+
+}
+
+int parser_binaryFromEmployee(FILE* pFile, LinkedList* pArrayListEmployee){
+
+    int error = 1;
+    Employee* auxEmployee;
+    int cantidadDeEmpleados;
+
+    if(pFile != NULL && pArrayListEmployee != NULL){
+
+        cantidadDeEmpleados = ll_len(pArrayListEmployee);
+        for(int i = 0; i < cantidadDeEmpleados; i++){
+
+            auxEmployee = (Employee*) ll_get(pArrayListEmployee, i);
+            if(auxEmployee != NULL){
+
+                fwrite(auxEmployee, sizeof(Employee), 1, pFile);
+
+            }
+
+        }
+        error = 0;
+
+    }
+    return error;
+
 }

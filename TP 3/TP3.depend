@@ -151,33 +151,65 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1604609627 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\controller.c
+1604880379 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
 
 1604612135 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\linkedlist.h
 
-1604613291 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\employee.h
+1604879644 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\employee.h
+	"LinkedList.h"
 
-1604616429 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\employee.c
+1604880379 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\employee.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<ctype.h>
 	"Employee.h"
+	"bibliotecaUTN.h"
+	"Controller.h"
+	"funcionesAdicionales.h"
 
-1604614729 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\main.c
+1604880647 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"funcionesAdicionales.h"
 
-1604429848 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\controller.h
+1604875664 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\controller.h
 
-1604616327 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\parser.c
+1604863862 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"LinkedList.h"
+	"Employee.h"
+
+1604879650 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\funcionesadicionales.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesAdicionales.h"
+	"Employee.h"
+	"bibliotecaUTN.h"
+
+1604875664 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\funcionesadicionales.h
+
+1604692431 source:c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\bibliotecautn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"bibliotecaUTN.h"
+
+1604691564 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\bibliotecautn.h
+
+1604863799 c:\users\intel\documents\github\tp_laboratorio_1\tp_laboratorio_1\tp 3\parser.h
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
-	"Employee.h"
 

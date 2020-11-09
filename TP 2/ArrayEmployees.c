@@ -124,7 +124,7 @@ int removeEmployee(Employee employeesList[], int len){
     if((employeesList != NULL) && (len > 0)){
 
         system("cls");
-        printf("*** BAJA PERSONA ***\n\n");
+        printf("*** BAJA EMPLEADO ***\n\n");
         printEmployees(employeesList, len);
         printf("\nIngrese id del empleado a dar de baja: ");
         scanf("%d", &id);

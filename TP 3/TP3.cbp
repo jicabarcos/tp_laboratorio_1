@@ -44,6 +44,14 @@
 		</Unit>
 		<Unit filename="Employee.h" />
 		<Unit filename="LinkedList.h" />
+		<Unit filename="bibliotecaUTN.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bibliotecaUTN.h" />
+		<Unit filename="funcionesAdicionales.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcionesAdicionales.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -52,9 +60,6 @@
 		</Unit>
 		<Unit filename="parser.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

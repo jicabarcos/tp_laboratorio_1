@@ -1,3 +1,5 @@
+#include "LinkedList.h"
+
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
 
@@ -25,13 +27,19 @@ int employee_getNombre(Employee* this, char* nombre);
 int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas);
 
-int employee_setSueldo(Employee* this, float sueldo);
-int employee_getSueldo(Employee* this, float* sueldo);
+int employee_setSueldo(Employee* this, int sueldo);
+int employee_getSueldo(Employee* this, int* sueldo);
 
 // SORT
 int employeeSortByName(void* empleadoA, void* empleadoB);
 int employeeSortById(void* empleadoA, void* empleadoB);
-int employeeSortByWorkHours(void* empleadoA, void* empleadoB);
-int employeeSortBySalary(void* empleadoA, void* empleadoB);
+int employeeSortByHorasTrabajadas(void* empleadoA, void* empleadoB);
+int employeeSortBySueldo(void* empleadoA, void* empleadoB);
+
+// EXTRA
+void employee_listOneEmployee(LinkedList* employeesList);
+int employee_addNewEmployee(LinkedList* employeesList);
+int employee_modifyEmployee(LinkedList* employeesList);
+int employee_removeEmployee(LinkedList* employeesList);
 
 #endif // employee_H_INCLUDED
