@@ -199,8 +199,8 @@ void* ll_get(LinkedList* this, int index)
         }
 
     }
-
     return returnAux;
+
 }
 
 
@@ -367,8 +367,8 @@ int ll_indexOf(LinkedList* this, void* pElement)
         }
 
     }
-
     return returnAux;
+
 }
 
 /** \brief Indica si la lista esta o no vacia
@@ -400,8 +400,8 @@ int ll_isEmpty(LinkedList* this)
         }*/
 
     }
-
     return returnAux;
+
 }
 
 /** \brief Inserta un nuevo elemento en la lista en la posicion indicada
@@ -600,7 +600,6 @@ int ll_sort(LinkedList* this, int(*pFunc)(void* ,void*), int order)
     if(this != NULL && pFunc != NULL){
 
         filteredLL = ll_newLinkedList();
-
         if(filteredLL != NULL){
 
             for(int i = 0; i <  ll_len(this); i++){

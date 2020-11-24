@@ -20,64 +20,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "../testing/inc/main_test.h"
 #include "../inc/LinkedList.h"
-
-typedef struct{
-
-    int id;
-    char nombre[50];
-    char sexo;
-    float sueldo;
-
-}eEmpleado;
-
-void mostrarEmpleado(eEmpleado* e){
-
-    if(e != NULL){
-
-        printf("%d    %s   %c   %.2f\n", e->id, e->nombre, e->sexo, e->sueldo);
-
-    }
-
-}
-
-void mostrarEmpleados(LinkedList* lista){
-
-    int tam;
-    if(lista != NULL){
-
-        tam = ll_len(lista);
-        for(int i = 0; i < tam; i++){
-
-            mostrarEmpleado(ll_get(lista, i));
-
-        }
-
-    }
-
-}
-
-int filtrarMujeres(void* emp){ // o puedo filtrar como quiera
-
-    int rta = 0;
-    eEmpleado* e = NULL;
-    if(emp != NULL){
-
-        e = (eEmpleado*) emp;
-
-        if(e->sexo == 'f'){
-
-            rta = 1;
-
-        }
-
-    }
-
-    return rta;
-
-}
-
+#include "funcionesAdicionales.h"
 
 int main(void)
 {
@@ -102,78 +48,314 @@ int main(void)
         startTesting(19); // ll_sort */
 
 
-    LinkedList* lista = ll_newLinkedList();
-    LinkedList* mujeres = NULL;
+    int opcionElegida;
+    int flagCarga = 0;
+    int tamanioLista;
+    char confirmaEliminar;
+    eAuto nuevoAuto;
+    eAuto* autoEliminado;
+    char agregarEliminados;
+    int flagPop = 0;
+    char imprimirSubLista;
+    char imprimirListaFiltrada;
+    char salir;
 
-    eEmpleado emp1 = {1, "Juan", 'm', 30000};
-    eEmpleado emp2 = {2, "Juana", 'f', 50000};
-    eEmpleado emp3 = {3, "Miguel", 'm', 20000};
-    eEmpleado emp4 = {4, "Analia", 'f', 60000};
-    eEmpleado emp5 = {5, "Jorge", 'm', 34000};
-    eEmpleado emp6 = {6, "Julia", 'f', 44000};
-    eEmpleado emp7 = {7, "Andrea", 'f', 37000};
+    LinkedList* listaAutos = ll_newLinkedList();
+    LinkedList* listaEliminados = ll_newLinkedList();
+    LinkedList* subLista = NULL;
+    LinkedList* listaClonada = NULL;
+    LinkedList* listaFiltrada = NULL;
 
-    ll_add(lista, &emp1);
-    ll_add(lista, &emp2);
-    ll_add(lista, &emp3);
-    ll_add(lista, &emp4);
-    ll_add(lista, &emp5);
-    ll_add(lista, &emp6);
-    ll_add(lista, &emp7);
+    eAuto auto1 = {1, "Ford", 2010, 300000};
+    eAuto auto2 = {2, "Chevrolet", 2002, 270000};
+    eAuto auto3 = {3, "Volkswagen", 2016, 350000};
+    eAuto auto4 = {4, "Renault", 1983, 320000};
+    eAuto auto5 = {5, "Audi", 2018, 400000};
 
-    mujeres = ll_filter(lista, filtrarMujeres);
+    printf("Inicializando programa...\n\n");
+    system("pause");
 
+    do{
 
-    printf("TODOS\n");
-    mostrarEmpleados(lista);
+        system("cls");
+        opcionElegida = menuDeOpciones(0);
 
-    printf("\n\nMUJERES\n");
-    mostrarEmpleados(mujeres);
+        switch(opcionElegida){
 
-    free(lista);
-    free(mujeres);
+            case 1:
 
+                system("cls");
+                if(!flagCarga){
 
+                    ll_add(listaAutos, &auto1);
+                    ll_add(listaAutos, &auto2);
+                    ll_add(listaAutos, &auto3);
+                    ll_add(listaAutos, &auto4);
+                    ll_add(listaAutos, &auto5);
+                    printf("Datos importados con exito!\n\n");
+                    flagCarga = 1;
+                }
+                else{
 
+                    printf("Ya se realizo la carga anteriormente!\n\n");
 
+                }
+                system("pause");
+                break;
 
+            case 2:
 
+                system("cls");
+                if(ll_isEmpty(listaAutos) == 0){
 
+                    tamanioLista = ll_len(listaAutos);
+                    printf("La lista tiene %d elementos\n", tamanioLista);
 
+                }
+                else if(ll_isEmpty(listaAutos) == 1){
 
+                    printf("La lista tiene 0 elementos\n");
+
+                }
+                else{
+
+                    printf("Hubo un error al calcular el largo de la lista\n");
+
+                }
+                system("pause");
+                break;
+
+            case 3:
+
+                system("cls");
+                if(flagCarga){
+
+                    mostrarAutos(listaAutos);
+
+                }
+                system("pause");
+                break;
+
+            case 4:
+
+                system("cls");
+                if(flagCarga){
+
+                    mostrarAutos(listaAutos);
+                    modificarAuto(listaAutos);
+
+                }
+                system("pause");
+                break;
+
+            case 5:
+
+                system("cls");
+                if(flagCarga){
+
+                    mostrarAutos(listaAutos);
+                    if(!eliminarAuto(listaAutos)){
+
+                        printf("Elemento eliminado con exito!\n");
+
+                    }
+
+                }
+                else{
+
+                    printf("No puede eliminar un elemento si no hay ninguno cargado.\n");
+
+                }
+                system("pause");
+                break;
+
+            case 6:
+
+                system("cls");
+                if(!vaciarLista(listaAutos)){
+
+                    printf("Lista vaciada con exito!\n");
+
+                }
+                else{
+
+                    printf("Hubo un error al intentar vaciar la lista\n");
+
+                }
+                system("pause");
+                break;
+
+            case 7:
+
+                system("cls");
+                printf("\nPRECAUCION!!! Esta a punto de eliminar la lista definitivamente\n");
+                printf("Si desea hacerlo, pulse 'X', de lo contrario, pulse otro caracter\n");
+                fflush(stdin);
+                confirmaEliminar = toupper(getchar());
+                if(confirmaEliminar != 'X'){
+
+                    printf("Eliminacion cancelada por el usuario\n");
+                    system("pause");
+                    break;
+
+                }
+                else{
+
+                    if(!eliminarLista(listaAutos)){
+
+                        printf("Eliminacion exitosa!\n");
+
+                    }
+                    else{
+
+                        printf("Error al eliminar la lista\n");
+
+                    }
+                    system("pause");
+                    break;
+
+                }
+
+            case 8:
+
+                system("cls");
+                nuevoAuto = generarElemento(listaAutos);
+                if(!agregarElemento(listaAutos, nuevoAuto)){
+
+                    printf("Elemento agregado a la lista con exito!\n");
+
+                }
+                else{
+
+                    printf("Error al agregar elemento a la lista\n");
+
+                }
+                system("pause");
+                break;
+
+            case 9:
+
+                system("cls");
+                mostrarAutos(listaAutos);
+                autoEliminado = (eAuto*) eliminarYGuardar(listaAutos);
+                printf("Desea agregar este elemento a la lista de eliminados? 'Y' para confirmar\n");
+                fflush(stdin);
+                agregarEliminados = toupper(getchar());
+                if(agregarEliminados == 'Y'){
+
+                    ll_add(listaEliminados, autoEliminado);
+                    flagPop = 1;
+
+                }
+                system("pause");
+                break;
+
+            case 10:
+
+                system("cls");
+                if(flagCarga && flagPop){
+
+                    if(compararListas(listaAutos, listaEliminados) == 0){
+
+                        printf("Las listas son iguales!\n\n");
+
+                    }
+                    else if(compararListas(listaAutos, listaEliminados) == 1){
+
+                        printf("Las listas no son iguales\n\n");
+
+                    }
+                    else{
+
+                        printf("Error al comparar las listas\n\n");
+
+                    }
+
+                }
+                else{
+
+                    printf("No hay dos listas para comparar\n\n");
+
+                }
+                system("pause");
+                break;
+
+            case 11:
+
+                system("cls");
+                subLista = crearSubLista(listaAutos);
+                printf("Quiere imprimir la sublista? 'Y' para confirmar\n");
+                fflush(stdin);
+                imprimirSubLista = toupper(getchar());
+                if(imprimirSubLista == 'Y'){
+
+                    mostrarAutos(subLista);
+
+                }
+                system("pause");
+                break;
+
+            case 12:
+
+                system("cls");
+                listaClonada = ll_clone(listaAutos);
+                system("pause");
+                break;
+
+            case 13:
+
+                system("cls");
+                if(!ll_sort(listaAutos, ordenarAutoPorPrecio, 1)){
+
+                    printf("Lista ordenada con exito!\n");
+
+                }
+                else{
+
+                    printf("Error al intentar ordenar la lista\n");
+
+                }
+                system("pause");
+                break;
+
+            case 14:
+
+                system("cls");
+                listaFiltrada = ll_filter(listaAutos, filtrarAutosNuevos);
+                printf("Quiere imprimir la lista filtrada? 'Y' para confirmar\n");
+                fflush(stdin);
+                imprimirListaFiltrada = toupper(getchar());
+                if(imprimirListaFiltrada == 'Y'){
+
+                    mostrarAutos(listaFiltrada);
+
+                }
+
+                system("pause");
+                break;
+
+            case 20:
+
+                system("cls");
+                printf("Pulse 'Y' para salir u otro caracter para seguir trabajando\n");
+                fflush(stdin);
+                salir = toupper(getchar());
+                system("pause");
+                break;
+
+        }
+
+    }while(salir != 'Y');
+
+    system("cls");
+    printf("Gracias por utilizar el programa, hasta la proxima!!\n\n");
+    system("pause");
+
+    free(listaAutos);
+    free(listaEliminados);
+    free(subLista);
+    free(listaClonada);
+    free(listaFiltrada);
     return 0;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

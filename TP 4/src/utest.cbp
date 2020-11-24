@@ -125,13 +125,17 @@
 		<Unit filename="LinkedList.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="funcionesAdicionales.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcionesAdicionales.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Unit filename="utn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="utn.h" />
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
