@@ -3,7 +3,7 @@ ll_len: main - case 2
 ll_getNode: ll_get
 ll_add: main - case 1
 ll_get: main - case 3
-ll_set: FALTA
+ll_set: main - case 4
 ll_ remove: main - case 5
 ll_clear: main - case 6
 ll_deleteLinkedList: main - case 7
